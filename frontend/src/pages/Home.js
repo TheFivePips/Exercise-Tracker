@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react';
 import WorkoutDetails from '../componenets/workoutDetails';
-import WorkoutForm from './workoutForm';
+import WorkoutForm from '../componenets/workoutForm';
 import {useWorkoutContext} from '../hooks/useWorkoutContext'
 
 const Home = () => {
