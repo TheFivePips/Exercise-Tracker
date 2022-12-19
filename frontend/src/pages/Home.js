@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import WorkoutDetails from '../componenets/workoutDetails';
+import WorkoutForm from './workoutForm';
 
 const Home = () => {
 
@@ -23,6 +24,7 @@ const Home = () => {
                     <WorkoutDetails key={workout._id} workout={workout} />
                 ))}
             </div>
+            <WorkoutForm />
             
         </div>
     );
