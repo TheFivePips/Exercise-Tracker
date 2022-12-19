@@ -2,10 +2,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 mongoose.set("strictQuery", false);
-
 require('dotenv').config()
-
-const workoutRoutes = require('./routes/workouts')
+const workoutRoutes = require('./routes/workoutsRoutes')
 
 const app = express()
 
