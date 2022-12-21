@@ -7,8 +7,8 @@ const Signup = () => {
     const {signup, isLoading, error} = useSignup()
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-       await signup(email, password)
+      e.preventDefault()
+      await signup(email, password)
     }
 
     return (

@@ -25,7 +25,7 @@ const Home = () => {
 
             fetchWorkouts()
         }
-    }, [dispatch, workouts, user]) 
+    }, [dispatch, user]) 
 
     return (
         <div className='home'>
