@@ -4,25 +4,27 @@ const mongoose = require('mongoose')
 
 // get all workouts
 const getWorkouts = async (req, res) => {
-    const workouts = await Workout.find({}).sort({createdAt: -1})
+  const user_id = req.user._id
 
-    res.status(200).json(workouts)
+  const workouts = await Workout.find({user_id}).sort({createdAt: -1})
+
+  res.status(200).json(workouts)
 }
 
 // get single workout
 const getSingleWorkout = async (req, res) => {
-    const { id } = req.params
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({ error: "No such workout exists" });
-    }
+  const { id } = req.params
+  if(!mongoose.Types.ObjectId.isValid(id)){
+    return res.status(404).json({ error: "No such workout exists" });
+  }
 
-    const workout = await Workout.findById(id)
+  const workout = await Workout.findById(id)
 
-    if(!workout){
-        return res.status(404).json({error: "No such workout exists"})
-    }
-    
-    res.status(200).json(workout)
+  if(!workout){
+    return res.status(404).json({error: "No such workout exists"})
+  }
+  
+  res.status(200).json(workout)
     
 }
 
@@ -51,11 +53,13 @@ const createWorkout = async (req, res) => {
 
   //   add document to the DB
   try {
+    const user_id = req.user._id
     const workout = await Workout.create({
       title,
       load,
       reps,
-      sets
+      sets,
+      user_id
     });
     res.status(200).json(workout);
   } catch (error) {
