@@ -11,12 +11,18 @@ const app = express()
 
 // middleware
 app.use(express.json())
+app.use(express.static(path.join(__dirname, "./frontend/build")))
 
-// app.use((req, res, next) =>{
-//     console.log(req.path, req.method);
-//     next()
+// serving the frontend
+app.get("*", function ( req, res) {
+  res.sendFile(
+    path.join(__dirname, "./frontend/build/index.html"),
+    function(err) {
+      res.status(500).send(err)
+    }
+  )
+})
 
-// })
 
 
 // routes
